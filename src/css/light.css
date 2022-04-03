@@ -1,0 +1,17 @@
+@import './base.css';
+
+:root {
+  --beige: #FCF8E8;
+  --salt: #ECDFC8;
+  --peach: #DF7861;
+}
+
+.wrap-game {
+  background-color: var(--beige);
+}
+.game {
+  background-color: var(--salt);
+}
+.square {
+  background: var(--peach);
+}

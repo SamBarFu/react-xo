@@ -1,0 +1,42 @@
+@import './base.css';
+
+:root {
+  --darked: #222831;
+  --grey-dark: #393e46;
+  --grey-a10: #eeeeee10;
+  --grey: #EEE;
+  --grey-d: #DDD;
+  --orange: #D65A31;
+  --navy: #22577E;
+  --light-green: #F4FCD9;
+  --dark-green: #1E5128;
+}
+
+body {
+    color: var(--grey);
+}
+
+
+.container-avatar.current-turn{
+    background-color: var(--grey-d);
+}
+.container-avatar.turn-off > svg{
+    color: var(--grey-a10) !important;
+}
+.container-avatar{
+    background-color: var(--grey-a10);
+}
+
+.wrap-game{
+  background-color: var(--darked);
+}
+.game {
+  background-color: var(--grey-dark);
+}
+.square {
+  background: var(--grey-a10);
+}
+.square.square-stripe {
+    background: var(--light-green);
+}
+  
