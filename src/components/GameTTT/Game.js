@@ -5,19 +5,25 @@ import Board from "./Board";
 import Players from "./Players";
 import Equis from './PlayerTokens/Equis';
 import Cero from './PlayerTokens/Cero';
+import Header from '../Header';
+import Footer from '../Footer';
+
 
 const Game = () => {
     const [history, setHistory] = useState([{squares: Array(9).fill(null)}]);
+    const [historyWinner, setHistoryWinner] = useState([]);
     const [stepNumber, setStepNumber] = useState(0);
     const [xIsNext, setXIxnext] = useState(true);
     const [players, setPlayers] = useState([
         {
             icon: <Equis />,
+            name: 'x',
             wins: 0,
             currentTurn: xIsNext ?? true
         },
         {
             icon: <Cero />,
+            name: 'o',
             wins: 0,
             currentTurn: !xIsNext ?? true
         }
@@ -36,9 +42,27 @@ const Game = () => {
         ]);
     }
 
+    const setCountWinner = () => {
+        if(!winner) return;
+        console.log(winner);
+        setHistoryWinner([...historyWinner,{
+            stripe: winner.stripe ?? false,
+            win: winner.win,
+            lastMove: current.squares.slice()
+        }]);
+        setPlayers([
+            {...players[0], wins: (winner.win === 'X') ? players[0].wins += 1 : players[0].wins},
+            {...players[1], wins: (winner.win === 'O') ? players[1].wins += 1 : players[1].wins}
+        ]);
+    }
+
     useEffect(()=>{
         setCurrentTurn();
     }, [xIsNext]);
+
+    useEffect(()=>{
+        setCountWinner();
+    }, [history]);
 
 
     /* if (winner) {
@@ -65,8 +89,7 @@ const Game = () => {
       setXIxnext(!xIsNext); 
     }
   
-    const jumpTo = (step) => {
-       
+    const jumpTo = (step) => {       
       setStepNumber(step);
       setXIxnext((step % 2) === 0);
     }
@@ -83,23 +106,32 @@ const Game = () => {
         );
     });
 
+    const getDrawsCount = ()=>{
+        return historyWinner.filter(history => history.win === 'draw').length;
+    }
+
     return (
-        <div className="game">
-            <React.StrictMode>
-                <Players playersInfo={players} xIsNext={xIsNext}/>
-                <div className="game-board">
-                    <Board 
-                        squares={current.squares}
-                        winner={winner}
-                        onClick={(i)=>handleClick(i)}
-                    />
+        <>
+            <Header onClick={()=>jumpTo(0)} />
+            <div className="game">
+                <React.StrictMode>
+                    <Players playersInfo={players} draws={getDrawsCount()}/>
+                    <div className="game-board">
+                        <Board 
+                            squares={current.squares}
+                            winner={winner}
+                            onClick={(i)=>handleClick(i)}
+                        />
+                    </div>
+                </React.StrictMode>
+                <div className="game-info">
+                    <div>{status}</div>
+                    {/* <ol>{moves}</ol> */}
                 </div>
-            </React.StrictMode>
-            <div className="game-info">
-                <div>{status}</div>
-                {/* <ol>{moves}</ol> */}
             </div>
-        </div>
+            <Footer />
+        </>
+        
     );
 }
 

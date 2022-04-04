@@ -4,7 +4,7 @@ const Board = ({squares, onClick, winner}) => {
 
     const renderSquare = (i) => {
         let isStripe = false;
-        if(winner){
+        if(winner && winner.stripe){
             isStripe = winner.stripe.includes(i) ? true : false;
         }
         return (

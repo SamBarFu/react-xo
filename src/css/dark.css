@@ -40,3 +40,8 @@ body {
     background: var(--light-green);
 }
   
+/*
+** setting */
+.container-logo{
+  background-color: var(--grey-a10);;
+}
