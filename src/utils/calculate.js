@@ -17,6 +17,12 @@ const calculateWinner = (squares) => {
           'win': squares[a]
       };
     }
+    
+    if(!squares.includes(null)){
+      return {
+        'win': 'draw'
+      };
+    }
   }
   return null;  
 }

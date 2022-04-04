@@ -1,14 +1,16 @@
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Game from './components/GameTTT/Game';
-import Footer from './components/Footer';
-import Header from './components/Header';
-
+import Setting from './components/settings/Setting';
 const App = () => {
     return (
         <main className="main">
             <div className="wrap-app">
-                <Header />
-                <Game />
-                <Footer />
+                <Router>
+                    <Routes>
+                        <Route path="/" element={<Game />} />
+                        <Route path="about" element={<Setting />} />
+                    </Routes>
+                </Router>
             </div>
         </main>
     );

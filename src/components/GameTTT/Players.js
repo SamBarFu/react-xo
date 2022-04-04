@@ -1,9 +1,10 @@
 import {React} from 'react';
 import PropTypes from 'prop-types';
 import { IconContext } from "react-icons";
+import { FaBalanceScale } from "react-icons/fa";
 import { BsTrophyFill } from "react-icons/bs";
 
-const Players = ({playersInfo}) => {
+const Players = ({playersInfo, draws}) => {
 
     /* const getWinsPlayer = (wins)=>{
         if(wins > 0){
@@ -22,7 +23,7 @@ const Players = ({playersInfo}) => {
             <div className='players'>
                 { playersInfo.map((player, index)=>{                    
                     return (
-                        <div className='player-card' key={index}>
+                        <div className={`player-card player-${index}`} key={player.name}>
                             <div className={`container-avatar ${player.currentTurn ? 'current-turn': 'turn-off'}`}>
                                 {player.icon}                   
                             </div>
@@ -34,9 +35,20 @@ const Players = ({playersInfo}) => {
                         </div>
                     )
                 }) }
+                <div className='info-game'>
+                    <div className='count-draws'>
+                        <IconContext.Provider value={{color: '#eee', size: '16px'}}>
+                            <FaBalanceScale /> { draws}
+                        </IconContext.Provider>
+                    </div>
+                </div>
             </div>
         </div>
     );
+}
+
+Players.defaultProps = {
+    draws: 0
 }
 
 Players.propTypes = {
