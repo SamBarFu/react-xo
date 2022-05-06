@@ -124,7 +124,6 @@ const Game = () => {
       <Header onClick={() => jumpTo(0)} />
       <StyledGame>
         <React.StrictMode>
-          dasdsaasd
           <Players playersInfo={players} draws={getDrawsCount()} />
           <Board
             squares={current.squares}
