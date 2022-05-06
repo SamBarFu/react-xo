@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import calculateWinner from "../../utils/calculate";
+import calculateWinner from "../../../utils/calculate";
 
-import Board from "./Board";
-import Players from "./Players";
-import Equis from './PlayerTokens/Equis';
-import Cero from './PlayerTokens/Cero';
-import Header from '../Header';
-import Footer from '../Footer';
+import Board from "../board/Board";
+import Players from "../players/Players";
+import Equis from '../PlayerTokens/Equis';
+import Cero from '../PlayerTokens/Cero';
+import Header from '../../header/Header';
+import Footer from '../../footer/Footer';
+
+import StyledGame from "./StyledGame";
 
 
 const Game = () => {
@@ -32,7 +34,6 @@ const Game = () => {
     const historyGame = history;
     const current = historyGame[stepNumber];
     const winner = calculateWinner(current.squares);
-    let status;
 
     const setCurrentTurn = () => {
         if(winner) return;
@@ -44,7 +45,6 @@ const Game = () => {
 
     const setCountWinner = () => {
         if(!winner) return;
-        console.log(winner);
         setHistoryWinner([...historyWinner,{
             stripe: winner.stripe ?? false,
             win: winner.win,
@@ -61,7 +61,7 @@ const Game = () => {
     }, [xIsNext]);
 
     useEffect(()=>{
-        setCountWinner();
+        setCountWinner();        
     }, [history]);
 
 
@@ -94,7 +94,7 @@ const Game = () => {
       setXIxnext((step % 2) === 0);
     }
 
-    const moves = historyGame.map((step, move) => {
+    /* const moves = historyGame.map((step, move) => {
         const desc = move ?
             'Go to move #' + move :
             'Go to game start';
@@ -104,7 +104,7 @@ const Game = () => {
             <button onClick={()=>jumpTo(move)} >{desc}</button>
             </li>
         );
-    });
+    }); */
 
     const getDrawsCount = ()=>{
         return historyWinner.filter(history => history.win === 'draw').length;
@@ -113,22 +113,16 @@ const Game = () => {
     return (
         <>
             <Header onClick={()=>jumpTo(0)} />
-            <div className="game">
+            <StyledGame>
                 <React.StrictMode>
                     <Players playersInfo={players} draws={getDrawsCount()}/>
-                    <div className="game-board">
-                        <Board 
-                            squares={current.squares}
-                            winner={winner}
-                            onClick={(i)=>handleClick(i)}
-                        />
-                    </div>
+                    <Board 
+                        squares={current.squares}
+                        winner={winner}
+                        onClick={(i)=>handleClick(i)}
+                    />
                 </React.StrictMode>
-                <div className="game-info">
-                    <div>{status}</div>
-                    {/* <ol>{moves}</ol> */}
-                </div>
-            </div>
+            </StyledGame>
             <Footer />
         </>
         

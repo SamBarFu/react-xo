@@ -3,7 +3,9 @@ import { IconContext } from "react-icons";
 import { FaGithub, FaTwitter, FaHome } from "react-icons/fa";
 import roxLogo from "../../img/xorLogo.png";
 
-import Footer from '../Footer';
+import Footer from '../footer/Footer';
+
+import { StyledWrapperSetting, StyledSetting, StyledSocials } from "./StyledSetting";
 
 const styles = {
     size: '30px',
@@ -12,22 +14,21 @@ const styles = {
 
 const Setting = ()=> {
     return (
-        <div className="wrap-setting">
+        <StyledWrapperSetting>
             <Link to="/">
                 <div className="container-icon-home">
                     <IconContext.Provider value={{color: '#eee', size: '2em'}}>
                         <FaHome />
                     </IconContext.Provider>
-            </div>
+                </div>
             </Link>
-            <div className="setting">
+            <StyledSetting>
                 <div className="logo">
                     <div className="container-logo">
                         <img src={roxLogo} alt="rox"/>
                     </div>
-                    {/* <h1>Tic Tac Toe Game</h1> */}
                 </div>
-                <div className="socials">
+                <StyledSocials>
                     <a href="https://github.com/SamBarFu/react-xo.git" target="_blank" rel="noreferrer">
                         <IconContext.Provider value={styles}>
                             <FaGithub />
@@ -38,11 +39,11 @@ const Setting = ()=> {
                             <FaTwitter />
                         </IconContext.Provider>
                     </a>
-                </div>
+                </StyledSocials>
                 <small>v1.0.0</small>
                 <Footer />
-            </div>
-        </div>
+            </StyledSetting>
+        </StyledWrapperSetting>
     );
 }
 

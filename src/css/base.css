@@ -1,4 +1,4 @@
-body {
+/* body {
   font: 14px "Nunito", Futura, sans-serif;
   margin: 0;
 }
@@ -32,11 +32,11 @@ ul {
     width: 350px;
     max-width: 350px;
     height: 80%;
-}
+} */
 
 /*
 ** header */
-.wrap-header{
+/* .wrap-header{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -47,7 +47,7 @@ ul {
   border-radius: 10px;
 }
 .container-icon-header{
- /*  background-color: var(--grey-a10); */
+  background-color: var(--grey-a10);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,19 +58,19 @@ ul {
 }
 .header-logo{
   width: 60px;
-}
+} */
 
 /*
 ** players*/
-.players{
+/* .players{
     display: grid;
     grid-template-columns: 60px auto 60px;
     grid-template-rows: auto;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     width: 80%;
     margin: 0 auto 1rem auto;
-}
-.player-0{
+} */
+/* .player-0{
   grid-column: 1/2;
   grid-row: 1/2;
 }
@@ -98,33 +98,33 @@ ul {
 }
 .container-avatar img{
     width: 100%;
-}
-.player-wins, .count-draws{
+} */
+/* .player-wins, .count-draws{
   display: flex;
   align-items: center;
   gap: 0 3px;
   margin: 5px 0 0 0;
   font-size: 14px;
   font-weight: 600;
-}
+} */
 
 /*info game*/
-.info-game{
+/* .info-game{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-}
+} */
 
-.game {
+/* .game {
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100%;
-}
+} */
 
 
-.game-board {
+/* .game-board {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -139,7 +139,7 @@ ul {
   justify-content: stretch;
   width: 100%;
   gap: 8px;
-}
+} */
 
 /* .board-row:after {
     clear: both;
@@ -147,11 +147,11 @@ ul {
     display: table;
   } */
 
-.status {
+/* .status {
   margin-bottom: 10px;
-}
+} */
 
-.square {
+/* .square {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -166,29 +166,29 @@ ul {
 
 .square:focus {
   outline: none;
-}
-
+} */
+/* 
 .kbd-navigation .square:focus {
   background: #ddd;
-}
+} */
 
-.game-info {
+/* .game-info {
   margin-left: 20px;
-}
+} */
 
 
 /*
 ** footer */
-.footer{
+/* .footer{
     text-align: center;
     font-size: 12px;
     font-weight: 300;
-}
+} */
 
 
 /*
 ** setting */
-.wrap-setting{
+/* .wrap-setting{
   display: flex;
   flex-direction: column;
   justify-content: stretch;
@@ -227,42 +227,34 @@ ul {
   align-items: center;
   gap: 0 1rem;
   margin: 1rem 0;
-}
+} */
 
 @media only screen and (max-width: 575px){
-  .main{
+  /* .main{
     padding: 0 1rem;
   }
   .wrap-app {
     width: 100%;
     height: calc(100% - 10rem);
-  }
+  } */
 
   /*
   ** header */
-  .wrap-header{
+  /* .wrap-header{
     width: 90%;
-  }
+  } */
 
   /*
   ** Game*/
-  .game-board {
+  /* .game-board {
     width: 90%;
-  }
+  } */
 
   /*
   ** players*/
-  .players{
+  /* .players{
     width: 95%;
-  }
+  } */
 }
 
 
-@keyframes addCount{
-  to{
-    transform: scale(1);
-  }
-  from{
-    transform: scale(1.1);
-  }
-}

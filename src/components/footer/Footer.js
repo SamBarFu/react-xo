@@ -1,8 +1,10 @@
+import WrapperFooter from './StyledFooter';
+
 const Footer = () => {
     return (
-        <footer className="footer">
+        <WrapperFooter>
             &copy; 2022 samsoft
-        </footer>
+        </WrapperFooter>
     );
 }
 
